@@ -3,21 +3,21 @@
 # Find the largest palindrome made from the product of two 3-digit numbers.
 import unicode
 
-proc isPalindrome1(n:int):bool =
+proc isPalindrome(n:int):bool =
   var s = $n
   for i in 1..len(s) div 2:
     if s[i-1] != s[^i]: return false
   return true
 
-proc isPalindrome(n:int):bool =
-  return $n == reversed($n)
+proc isPalindrome(s:string):bool =
+  return s == reversed(s)
 
 proc compute =
   var maxPalindrome = 0
   for i in 100..999:
     for j in 100..999:
       var n = i * j
-      if n > maxPalindrome and n.isPalindrome:
+      if n > maxPalindrome and isPalindrome($n):
         maxPalindrome = n
   echo maxPalindrome
 
